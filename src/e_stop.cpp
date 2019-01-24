@@ -8,22 +8,16 @@ geometry_msgs::Twist stop;
 
 
 void emergencyCallback(const std_msgs::Bool& stop_bool){
-    
-
-        twistPublisher.publish(stop);
-  
+  twistPublisher.publish(stop);
  }
 
 void twistCallback(const geometry_msgs::Twist& twist){
-
     if(!emergency.data)
 	twistPublisher.publish(twist);
-
 }
 
 int main(int argc, char **argv)
 {
-
     /// Receives Twist messages for the base.
 	ros::Subscriber baseCommandSubscriber;
 	/// Publishes Odometry messages
@@ -34,7 +28,6 @@ int main(int argc, char **argv)
 	/* setup input/output communication */
 	
 	emergency.data = false;
-
 	stop.linear.x = 0;
 	stop.linear.y = 0;
 	stop.linear.z = 0;
@@ -49,7 +42,6 @@ int main(int argc, char **argv)
 	//while (n.ok()){
 	//	ros::spinOnce();
 	//}
-
   return 0;
 }
 
